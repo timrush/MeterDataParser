@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+         <!-- XML Schema Generated from XML Document on Wed Oct 18 2017 18:29:04 GMT-0400 (EDT) -->
+         <!-- with XmlGrid.net Free Online Service http://xmlgrid.net -->
+         <xs:element name="SSNExportDocument">
+               <xs:complexType>
+                     <xs:sequence>
+                           <xs:element name="MeterData" maxOccurs="unbounded">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:element name="RegisterData">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="RegisterRead" maxOccurs="unbounded">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Tier">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:element name="Register" maxOccurs="unbounded">
+                                                                                                         <xs:complexType>
+                                                                                                               <xs:attribute name="Number" type="xs:int"></xs:attribute>
+                                                                                                               <xs:attribute name="Summation" type="xs:double"></xs:attribute>
+                                                                                                               <xs:attribute name="SummationUOM" type="xs:string"></xs:attribute>
+                                                                                                               <xs:attribute name="CumulativeDemand" type="xs:double"></xs:attribute>
+                                                                                                               <xs:attribute name="MaximumDemand" type="xs:double"></xs:attribute>
+                                                                                                               <xs:attribute name="MaximumDemandTime" type="xs:string"></xs:attribute>
+                                                                                                               <xs:attribute name="DemandUOM" type="xs:string"></xs:attribute>
+                                                                                                         </xs:complexType>
+                                                                                                   </xs:element>
+                                                                                             </xs:sequence>
+                                                                                             <xs:attribute name="Number" type="xs:int"></xs:attribute>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                           </xs:sequence>
+                                                                           <xs:attribute name="ReadTime" type="xs:string"></xs:attribute>
+                                                                           <xs:attribute name="GatewayCollectedTime" type="xs:string"></xs:attribute>
+                                                                           <xs:attribute name="RegisterReadSource" type="xs:string"></xs:attribute>
+                                                                           <xs:attribute name="Season" type="xs:int"></xs:attribute>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                         <xs:attribute name="StartTime" type="xs:string"></xs:attribute>
+                                                         <xs:attribute name="EndTime" type="xs:string"></xs:attribute>
+                                                         <xs:attribute name="NumberReads" type="xs:int"></xs:attribute>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="IntervalReadData">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="Interval" maxOccurs="unbounded">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:element name="Reading" maxOccurs="unbounded">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:element name="ChannelStatus" type="xs:string"></xs:element>
+                                                                                             </xs:sequence>
+                                                                                             <xs:attribute name="Channel" type="xs:int"></xs:attribute>
+                                                                                             <xs:attribute name="RawValue" type="xs:int"></xs:attribute>
+                                                                                             <xs:attribute name="Value" type="xs:int"></xs:attribute>
+                                                                                             <xs:attribute name="UOM" type="xs:string"></xs:attribute>
+                                                                                             <xs:attribute name="BlockEndValue" type="xs:double"></xs:attribute>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                           </xs:sequence>
+                                                                           <xs:attribute name="EndTime" type="xs:string"></xs:attribute>
+                                                                           <xs:attribute name="GatewayCollectedTime" type="xs:string"></xs:attribute>
+                                                                           <xs:attribute name="BlockSequenceNumber" type="xs:int"></xs:attribute>
+                                                                           <xs:attribute name="IntervalSequenceNumber" type="xs:int"></xs:attribute>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                         <xs:attribute name="IntervalLength" type="xs:int"></xs:attribute>
+                                                         <xs:attribute name="StartTime" type="xs:string"></xs:attribute>
+                                                         <xs:attribute name="EndTime" type="xs:string"></xs:attribute>
+                                                         <xs:attribute name="NumberIntervals" type="xs:int"></xs:attribute>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                             <xs:element name="EventData">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:element name="Event" maxOccurs="unbounded">
+                                                                     <xs:complexType>
+                                                                           <xs:attribute name="EventName" type="xs:string"></xs:attribute>
+                                                                           <xs:attribute name="EventTime" type="xs:string"></xs:attribute>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                         <xs:attribute name="StartTime" type="xs:string"></xs:attribute>
+                                                         <xs:attribute name="EndTime" type="xs:string"></xs:attribute>
+                                                         <xs:attribute name="NumberEvents" type="xs:int"></xs:attribute>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                       <xs:attribute name="MeterName" type="xs:string"></xs:attribute>
+                                       <xs:attribute name="UtilDeviceID" type="xs:string"></xs:attribute>
+                                       <xs:attribute name="MacID" type="xs:string"></xs:attribute>
+                                 </xs:complexType>
+                           </xs:element>
+                     </xs:sequence>
+                     <xs:attribute name="Version" type="xs:double"></xs:attribute>
+                     <xs:attribute name="DocumentID" type="xs:string"></xs:attribute>
+                     <xs:attribute name="ExportID" type="xs:string"></xs:attribute>
+                     <xs:attribute name="JobID" type="xs:int"></xs:attribute>
+                     <xs:attribute name="RunID" type="xs:int"></xs:attribute>
+                     <xs:attribute name="CreationTime" type="xs:string"></xs:attribute>
+                     <xs:attribute name="StartTime" type="xs:string"></xs:attribute>
+                     <xs:attribute name="EndTime" type="xs:string"></xs:attribute>
+               </xs:complexType>
+         </xs:element>
+   </xs:schema>
