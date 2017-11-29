@@ -1,7 +1,11 @@
 package com.dsd.parser;
 
 import java.util.List;
+import java.util.Properties;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -25,13 +29,29 @@ public class SSNReadParser {
 	public static void main(String[] args) {
 
 	 try {
-			
+		 	
+		 String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+		 String appConfigPath = rootPath + "applicaton.properties";
+
+		 InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("application.properties");		 
+		 
+		 Properties appProps = new Properties();
+		 appProps.load(input);
+		 String path = appProps.getProperty("winpath");
+		 System.out.println(path);
+
+		 String[] myFilesWin = new String[]{"C:\\work\\datafiles\\2012intervals1.xml",
+					"C:\\work\\datafiles\\2012intervals2.xml",
+					"C:\\work\\datafiles\\2012alldata.xml", 
+					"C:\\work\\datafiles\\onereg.xml",
+					"C:\\work\\datafiles\\2012xsdorig.xml"};
+
 		 String[] myFiles = new String[]{	"/media/trush/ex2part/datafiles/2012intervals1.xml",
 				 							"/media/trush/ex2part/datafiles/2012intervals2.xml",
 				 							"/media/trush/ex2part/datafiles/2012alldata.xml", 
 				 							"/media/trush/ex2part/datafiles/onereg.xml",
 				 							"/media/trush/ex2part/datafiles/2012xsdorig.xml"};
-		 File file = new File(myFiles[2]);
+		 File file = new File(myFilesWin[2]);
 		 System.out.println("Process file: "+ file.toString());
 
 		 JAXBContext jaxbContext = JAXBContext.newInstance(SSNExportDocument.class);
@@ -51,7 +71,7 @@ public class SSNReadParser {
 	            	mdStore.insertDevice(m.meterName, m.utilDeviceID, m.macID);
 	    			System.out.println("Processing Meter: " + m.meterName);
 	            	
-	    			int storeData =0;
+	    			int storeData = 0;
 	    			
 	    			if( storeData > 0 )
 	    			{
@@ -99,12 +119,16 @@ public class SSNReadParser {
 	            }
 	            mdStore.cleanup();	// Close DB connection
 
+	        	
 	        } catch (SQLException ex) {
 	            ex.printStackTrace();
 	        }
-		  } catch (JAXBException e) {
+		} catch (JAXBException e) {
 			e.printStackTrace();
-		  }
+		}
+		catch (IOException ei) {
+			ei.printStackTrace();
+		}
 	}
 
 }
